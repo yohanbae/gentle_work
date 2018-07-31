@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+    <title>YOHANISON</title>
+
+		<link rel="stylesheet" href="mdb/css/bootstrap.min.css">
+		<script src="mdb/js/jquery-3.3.1.min.js"></script>		  		
+
+		<script src="mdb/js/popper.min.js"></script>
+		<script src="mdb/js/bootstrap.min.js"></script>
+
+  	<link href="mdb/css/mdb.css" rel="stylesheet">	
+		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+		<script src="myapp.js"></script>
+	</head>
+
+	<body ng-app="myApp">
+		<div ng-controller="mainCtrl">
+			Gentle Work
+			<h6>This store open hours: {{store_open}} ~ {{store_close}}
+
+			<div class="work-box">
+				<div class="time-wrap">
+					<div ng-repeat="i in getNumber(total_hour) track by $index">
+						<div class="thetime">{{ $index + store_open }}</div>
+					</div>
+				</div>
+				<div class="day-box">
+					<div ng-repeat="today in new_schedule">
+						<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+						<div class="s-box"
+							ng-style="{
+								'left': today.right,
+								'height':today.height,
+								'top':today.top
+						}">
+							{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>
