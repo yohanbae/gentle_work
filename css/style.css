@@ -1,34 +1,101 @@
-.work-box .time-wrap {
-  width: 50px;
+.header {
+  height: 100px;
   background: lightgray;
-  float: left;
-  height: 100vh; }
-  .work-box .time-wrap .thetime {
-    border: 1px solid white;
-    font-size: 8px;
-    height: 15px;
+  margin-bottom: 20px; }
+
+.work-box {
+  position: relative; }
+  .work-box .time-wrap {
     width: 50px;
     float: left;
-    box-sizing: border-box; }
-.work-box .day-box {
-  background: lightblue;
-  position: relative; }
-  .work-box .day-box .name-box {
-    position: absolute;
-    top: 0;
-    height: 10px;
-    font-size: 10px;
-    text-align: center;
-    width: 50px; }
-  .work-box .day-box .s-box {
-    border: 2px solid gray;
-    border-radius: 3px;
-    padding: 3px;
-    width: 50px;
-    font-size: 10px;
-    height: 20px;
-    position: absolute;
-    left: 0;
-    box-sizing: border-box; }
+    height: 100vh;
+    margin-top: 30px; }
+    .work-box .time-wrap .thetime {
+      border: 1px solid white;
+      font-size: 10px;
+      height: 30px;
+      width: 50px;
+      float: left;
+      box-sizing: border-box;
+      background: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .work-box .day-wrap {
+    box-sizing: border-box;
+    margin-left: 50px;
+    width: calc(100vw - 250px);
+    background: yellow;
+    overflow: hidden;
+    position: relative;
+    overflow-x: scroll; }
+    .work-box .day-wrap .day-box {
+      background: lightblue;
+      position: absolute;
+      border: 2px solid white;
+      box-sizing: border-box;
+      height: 600px; }
+      .work-box .day-wrap .day-box .day-title {
+        height: 20px;
+        font-size: 10px;
+        text-align: center;
+        background: orange;
+        box-sizing: border-box;
+        width: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .work-box .day-wrap .day-box .name-box {
+        position: absolute;
+        top: 20px;
+        height: 10px;
+        font-size: 10px;
+        text-align: center;
+        width: 50px; }
+      .work-box .day-wrap .day-box .s-box {
+        margin-top: 30px;
+        border: 2px solid gray;
+        border-radius: 3px;
+        padding: 3px;
+        width: 50px;
+        font-size: 10px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        box-sizing: border-box;
+        transition: 500ms;
+        z-index: 99; }
+        .work-box .day-wrap .day-box .s-box:hover {
+          background: yellow; }
+
+.mybox {
+  width: 200px;
+  max-height: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 30px;
+  border: 0px solid lightblue;
+  border-radius: 5px;
+  display: none;
+  background: orange;
+  z-index: 9999; }
+  .mybox h6 {
+    font-size: 11px; }
+
+.addbox {
+  width: 200px;
+  max-height: 200px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 30px;
+  display: none;
+  background: orange;
+  z-index: 9999; }
+  .addbox h6 {
+    font-size: 11px; }
 
 /*# sourceMappingURL=style.css.map */

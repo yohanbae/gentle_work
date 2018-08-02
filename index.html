@@ -22,31 +22,182 @@
 
 	<body ng-app="myApp">
 		<div ng-controller="mainCtrl">
-			Gentle Work
-			<h6>This store open hours: {{store_open}} ~ {{store_close}}
+			<div class="header">
+				Gentle Work
+				<h6>This store open hours: {{store_open}} ~ {{store_close}}
+			</div>
 
 			<div class="work-box">
-				<div class="time-wrap">
+				<div class="time-wrap" ng-style="{'height': the_height}">
 					<div ng-repeat="i in getNumber(total_hour) track by $index">
 						<div class="thetime">{{ $index + store_open }}</div>
 					</div>
 				</div>
-				<div class="day-box">
-					<div ng-repeat="today in new_schedule">
-						<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
-						<div class="s-box"
-							ng-style="{
-								'left': today.right,
-								'height':today.height,
-								'top':today.top
-						}">
-							{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}						</div>
-					</div>
-				</div>
 
+				<div class="day-wrap"ng-style="{'height': the_height}">
+					<div class="day-box" ng-click="addClick('mon')"><!-- MONDAY -->
+						<div class="day-title" ng-style="{'left':0, width:mon_width}">MONDAY</div>
+						<div ng-repeat="today in mon_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'mon', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- MONDAY -->
+
+					<div class="day-box" ng-click="addClick('tue')" ng-style="{'left':mon_width }"><!-- TUESDAY -->
+						<div class="day-title" ng-style="{'left':0, width:tue_width}" >TUESDAY</div>
+						<div ng-repeat="today in tue_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'tue', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- TUESDAY -->
+
+					<div class="day-box" ng-click="addClick('wed')" ng-style="{'left': mon_width + tue_width}"><!-- WEDNSDAY -->
+						<div class="day-title" ng-style="{'left':0, width:wed_width}">WEDNSDAY</div>
+						<div ng-repeat="today in wed_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'wed', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- WENDSDAY -->
+
+					<div class="day-box" ng-click="addClick('thu')" ng-style="{'left':mon_width+tue_width+wed_width}"><!-- ThURS -->
+						<div class="day-title" ng-style="{'left':0, width:thu_width}">THURSDAY</div>
+						<div ng-repeat="today in thu_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'thu', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- THURSDAYs -->
+
+					<div class="day-box" ng-click="addClick('fri')" ng-style="{'left':mon_width+tue_width+wed_width+thu_width}"><!-- Friday -->
+						<div class="day-title" ng-style="{'left':0, width:fri_width}">FRIDAY</div>
+						<div ng-repeat="today in fri_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'fri', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- Friday -->
+
+					<div class="day-box" ng-click="addClick('sat')" ng-style="{'left':mon_width+tue_width+wed_width+thu_width+fri_width}"><!-- Saturday -->
+						<div class="day-title" ng-style="{'left':0, width:sat_width}">SATURDAY</div>
+						<div ng-repeat="today in sat_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'sat', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+
+					</div><!-- Saturday -->
+
+					<div class="day-box" ng-click="addClick('sun')" ng-style="{'left':mon_width+tue_width+wed_width+thu_width+fri_width+sat_width}"><!-- Sunday -->
+						<div class="day-title" ng-style="{'left':0, width:sun_width}">SUNDAY</div>
+						<div ng-repeat="today in sun_schedule track by $index">
+							<div class="name-box" ng-style="{'left': today.right}">{{today.name}}</div>
+							<div class="s-box"
+								ng-style="{
+									'left': today.right,
+									'height':today.height,
+									'top':today.top}"
+									ng-click="$event.stopPropagation(); sclick(today.name, today.start_time, today.end_time, $index, 'sun', $event)"
+									>
+								{{ today.name}} : {{today.start_time}} ~ {{today.end_time}}<br>
+								{{$index}}
+							</div>
+						</div>
+					</div><!-- Sunday -->
+
+
+				</div><!-- DAY-WRAP END : FOR ALL WEEK -->
 			</div>
 
+
+			<div class="mybox">
+				<h6>Change Schedule</h6>
+				<select id="ename" ng-model="selectedName1" ng-options="item for item in empRange">
+					<option value="" disabled selected>Employee Name</option>
+				</select><br>
+				<select id="stime" ng-model="selectedName" ng-options="item for item in timeRange">
+					<option value="" disabled selected>Start Time</option>					
+				</select>
+				<select id="etime" ng-model="selectedName2" ng-options="item for item in timeRange">
+					<option value="" disabled selected>End Time</option>
+				</select>
+				<br>
+				<button ng-click="handleDelete()">Delete</button>
+				<button ng-click="handleSubmit()">Submit</button>
+			</div>
+
+			<div class="addbox">
+				<h6>ADD EMOPLOYEE</h6>
+				<select id="ename" ng-model="selectedName1" ng-options="item for item in empRange">
+					<option value="" disabled selected>Employee Name</option>
+				</select><br>
+				<select id="stime" ng-model="selectedName" ng-options="item for item in timeRange">
+					<option value="" disabled selected>Start Time</option>					
+				</select>
+				<select id="etime" ng-model="selectedName2" ng-options="item for item in timeRange">
+					<option value="" disabled selected>End Time</option>
+				</select>
+				<br>
+				<button ng-click="handleAdd()">Submit</button>
+			</div>
+
+
+
 		</div>
+
+
 	</body>
+
+
 
 </html>
